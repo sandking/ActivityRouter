@@ -41,7 +41,11 @@ public class Path {
         if (urlPath.endsWith("/")) {
             urlPath = urlPath.substring(0, urlPath.length() - 1);
         }
-        parse(path, uri.getHost() + urlPath);
+        String host = uri.getHost();
+        if (host == null) {
+            host = "";
+        }
+        parse(path, host + urlPath);
         return path;
     }
 
